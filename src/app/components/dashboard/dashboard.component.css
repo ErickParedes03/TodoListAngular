@@ -1,0 +1,37 @@
+.bg{
+    height: calc(100% - 58px);
+    background-color: rgb(247, 241, 211);
+}
+
+.todo-block{
+    min-height: 400px;
+    min-width: 550px;
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000052;
+}
+
+.todo-header{
+    background: #c1e1f8;
+    padding: 10px;
+    border-radius: 600;
+}
+
+.text-header{
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.checkbox{
+    height: 15px;
+    margin-left: 10px;
+}
+
+h5{
+    background: #eee;
+    padding: 7px;
+    color: #3a3a3a;
+    border-radius: 3px;
+}

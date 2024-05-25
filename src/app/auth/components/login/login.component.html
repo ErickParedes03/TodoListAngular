@@ -1,0 +1,49 @@
+<div class="wrapped">
+    <div class="body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <img class="logo" src="../../../assets/img/cerrar.png" alt="img login">
+            <h2>Login</h2>
+            <div class="form-floating mb-3 mt-3">
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="floatingInput" 
+                    formControlName="username"
+                    placeholder="Ingrese usuario"
+                >
+                <label for="floatingInput">Usuario</label>
+                <div
+                    *ngIf="loginForm.get('username')?.errors?.['required'] && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)"
+                    class="text-danger m-2 d-flex"
+                >
+                User is required.
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="floatingPassword" 
+                    formControlName="password"
+                    placeholder="Ingrese Password"
+                >
+                <label for="floatingPassword">Password</label>
+                <div
+                    *ngIf="loginForm.get('password')?.errors?.['required'] && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+                    class="text-danger m-2 d-flex"
+                >
+                Password is required.
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button 
+                    type="submit" 
+                    [disabled]="loginForm.invalid"
+                    class="btn btn-primary"
+                >Login</button>
+            </div>
+            <p class="mt-3">No tiene cuenta ? <a routerLink="/sign-up">Sign Up</a></p>
+            <div class="text-danger m-2">{{loginError}}</div>
+        </form>
+    </div>
+</div>
