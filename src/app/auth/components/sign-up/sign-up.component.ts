@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmPasswordValidator } from '../../validators/password.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,7 +26,8 @@ export class SignUpComponent implements OnInit{
       email: ['', [Validators.required]],
       password:['', [Validators.required]],
       ConfirmPassword:['', [Validators.required]]
-    }, { validators: this.passwordMatchValidator });
+    }, { validator: ConfirmPasswordValidator.MatchPassword } as AbstractControlOptions
+    );
   }
 
   passwordMatchValidator(form: FormGroup){

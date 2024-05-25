@@ -22,6 +22,10 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.loginForm = this.initForm();
+    this.loginForm.get('username')?.statusChanges.subscribe(
+      () => {
+        if (this.loginForm.get('username')?.touched) this.loginError = ''     
+    });
   }
 
   initForm(): FormGroup{
