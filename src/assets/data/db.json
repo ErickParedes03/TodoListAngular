@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "test01",
+      "email": "test",
+      "password": "test01"
+    },
+    {
+      "id": "2",
+      "username": "erick",
+      "email": "er",
+      "password": "erick"
+    },
+    {
+      "id": "9f2cba68-3cc0-4e70-85d4-93b4b4fe373e",
+      "username": "Si",
+      "email": "Si@gamil.com",
+      "password": "si",
+      "ConfirmPassword": "si"
+    },
+    {
+      "id": "db9317f0-57be-4239-a2f6-c7ee22c197c8",
+      "username": "hello",
+      "email": "hello@gamil.com",
+      "password": "hello",
+      "ConfirmPassword": "hello"
+    },
+    {
+      "id": "bd2fa6cc-4036-4717-b585-27cbf3768d1b",
+      "username": "hi",
+      "email": "hidd@gg",
+      "password": "hi",
+      "ConfirmPassword": "hi"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "3",
+      "taskName": "Tarea I",
+      "finished": false
+    },
+    {
+      "id": "4",
+      "taskName": "Tarea II",
+      "finished": false
+    },
+    {
+      "id": "5",
+      "taskName": "Tarea III",
+      "finished": true
+    }
+  ]
+}

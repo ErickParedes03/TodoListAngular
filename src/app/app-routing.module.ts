@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: ' ', redirectTo: 'login', pathMatch: 'full' }, ///Si no hay "path" se redirecciona al login
   { path: 'login', component: LoginComponent  },
   { path: 'sign-up', component: SignUpComponent  },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
+  //{ path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
   { path: 'dashboard', component: DashboardComponent  },
   { path: '**', redirectTo: 'login', pathMatch:'full' } //Si el "path" NO EXISTE se redireciona al login
 

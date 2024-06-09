@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { catchError } from 'rxjs';
 import { TodoI } from 'src/app/interfaces/todo.interfaces';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,30 +10,26 @@ import { TodoI } from 'src/app/interfaces/todo.interfaces';
 })
 export class DashboardComponent {
   todoInput:string = "";
-  todoPendingList: TodoI[] = [
-    {
-      taskName:"Tarea I",
-      finished: false
-    },
-    {
-      taskName:"Tarea II",
-      finished: false
-    },
-    {
-      taskName:"Tarea III",
-      finished: false
-    },
-  ];
-  todoFinishedList: TodoI[] = [
-    {
-      taskName:"Tarea IV",
-      finished: true
-    },
-    {
-      taskName:"Tarea V",
-      finished: true
-    },
-  ];
+  todoPendingList: TodoI[] = [];
+  todoFinishedList: TodoI[] = [];
+  constructor(private taskService: TaskService) {}
+  ngOnInit(): void {
+    this.getTasks();
+  }
+  getTasks(){
+    this.taskService.getTasks()
+      .pipe(
+        catchError(error => {
+          console.error('Error al obtener tareas:', error);
+          return [];
+        })
+      )
+      .subscribe( res => {
+        console.log("Resss:", res);
+        this.todoPendingList = res.filter(task => !task.finished);
+        this.todoFinishedList = res.filter(task => task.finished);
+      })
+  }
 
   finishTodo(position : number){
     const item = this.todoPendingList.splice(position,1);

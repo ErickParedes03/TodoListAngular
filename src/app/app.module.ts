@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgxToastNotifierModule } from 'ngx-toast-notifier';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    NgxToastNotifierModule.forRoot(), 
   ],
   providers: [],
   bootstrap: [AppComponent]

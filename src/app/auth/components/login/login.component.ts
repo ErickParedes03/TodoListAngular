@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginRequestI } from 'src/app/interfaces/login.interface';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { NgxToastService } from 'ngx-toast-notifier';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private ngxToastService: NgxToastService
   ){}
 
   ngOnInit(): void {
@@ -40,10 +42,12 @@ export class LoginComponent implements OnInit{
       this.loginService.login(this.loginForm.value as LoginRequestI).subscribe({
         next: (userData) => {
           console.log("userData: ", userData);
+          this.ngxToastService.onSuccess('Success!','Login success')
         },
         error: (errorData) => {
           console.log("errorData: ", errorData);
           this.loginError = errorData;
+          this.ngxToastService.onDanger('Error!','Login error')
         },
         complete: () => {
           console.log("Login completo");

@@ -6,16 +6,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
-export class authGuard implements CanActivate{
-
-constructor(private loginService: LoginService, private router: Router) {}
-
-canActivate(
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree{
-    return this.loginService.currentLoginOn.value ? true : this.router.createUrlTree(['/login']);
+export class authGuard implements CanActivate {
+ 
+  constructor(private loginService: LoginService, private router: Router) {}
+ 
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+ 
+      return this.loginService.currentLoginOn.value ? true : this.router.createUrlTree(['/login']);
   }
-
-  
-};
+}
