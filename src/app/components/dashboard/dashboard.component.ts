@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { catchError } from 'rxjs';
+import { Subscription, catchError } from 'rxjs';
+import { LoginService } from 'src/app/auth/services/login.service';
 import { TaskI } from 'src/app/interfaces/task.interface';
 import { TodoI } from 'src/app/interfaces/todo.interfaces';
 import { TaskService } from 'src/app/services/task.service';
@@ -11,6 +12,8 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  private subscription!: Subscription;
+  userData: any;
   todoInput:string = "";
   taskToDelete = {
     index: 0,
@@ -23,8 +26,11 @@ export class DashboardComponent {
   };
   todoPendingList: TodoI[] = [];
   todoFinishedList: TodoI[] = [];
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private loginService: LoginService) {}
   ngOnInit(): void {
+    this.subscription = this.loginService.currentUserData.subscribe(data => {
+      this.userData = data;
+    });
     this.getTasks();
   }
   getTasks(){
@@ -36,9 +42,9 @@ export class DashboardComponent {
         })
       )
       .subscribe( res => {
-        console.log("Resss:", res);
-        this.todoPendingList = res.filter(task => !task.finished);
-        this.todoFinishedList = res.filter(task => task.finished);
+        const userTasks = res.filter(task => task.userId === this.userData.data.id);
+        this.todoPendingList = userTasks.filter(task => !task.finished);
+        this.todoFinishedList = userTasks.filter(task => task.finished);
       })
   }
 
@@ -67,7 +73,8 @@ export class DashboardComponent {
     const newTask = {
       id: uuidv4(),
       taskName: this.todoInput,
-      finished: false
+      finished: false,
+      userId: this.userData.data.id
     };
     this.taskService.addTask(newTask)
       .pipe(

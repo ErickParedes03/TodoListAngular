@@ -45,32 +45,38 @@
     {
       "id": "3",
       "taskName": "Tarea I",
-      "finished": false
+      "finished": false,
+      "userId": "2"
     },
     {
       "id": "5",
       "taskName": "Tarea III",
-      "finished": false
+      "finished": false,
+      "userId": "2"
     },
     {
       "id": "263a90a0-d78f-4add-83d0-9070b5c52123",
       "taskName": "tarea 20",
-      "finished": true
+      "finished": true,
+      "userId": "2"
     },
     {
       "id": "b40021d5-4dda-4e3a-a4a1-32e344e4bced",
       "taskName": "tarea 20",
-      "finished": true
+      "finished": true,
+      "userId": "1"
     },
     {
       "id": "05a52fb6-b95f-477c-8561-ddb063c1cde0",
       "taskName": "tarea 30",
-      "finished": true
+      "finished": true,
+      "userId": "1"
     },
     {
       "id": "a9a9010b-0c0c-4c0e-b202-77504458d1f1",
       "taskName": "tarea incompleta",
-      "finished": true
+      "finished": true,
+      "userId": "1"
     }
   ]
 }
