@@ -1,3 +1,4 @@
+<app-spinner></app-spinner>
 <app-navbar></app-navbar>
 <div class="container-fluid bg">
     <div class="col-12 d-flex justify-content-center">
@@ -38,7 +39,7 @@
                     <button
                         type="button"
                         class="btn btn-outline-light text-danger col-md-1"
-                        (click)="deleteTodoPrev(i,'pending')"
+                        (click)="openModal(i,todoPendingList,'pending')"
                     >
                         <i class="bi bi-trash"></i>
                     </button>
@@ -74,5 +75,29 @@
 
         </div>
 
+    </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title h5">Confirm deletion</span>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Are you sure you want to delete the task <i>{{taskToDelete.task.taskName}} ?</i></strong>
+                </p>
+                <p>
+                    <span class="text-danger">
+                        This opertaion can not be undonde.
+                    </span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary"(click)="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="deleteTodo()">OK</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -9,10 +9,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginService {
 
-  currentLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<LoginResponseI> = new BehaviorSubject<LoginResponseI>({} as LoginResponseI);
+  currentLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.getLoginStatus());
+  currentUserData: BehaviorSubject<LoginResponseI> = new BehaviorSubject<LoginResponseI>(this.getUserData());
 
   constructor(private userService: UserService) { }
+
+  private getLoginStatus(): boolean {
+    return !!localStorage.getItem('isLoggedIn');
+  }
+
+  private getUserData(): LoginResponseI {
+    const userData = localStorage.getItem('userData');
+    return userData ? JSON.parse(userData) : {} as LoginResponseI;
+  }
 
   login(credentials: LoginRequestI): Observable<LoginResponseI> {
     return this.userService.getUsers()
@@ -35,12 +44,23 @@ export class LoginService {
             };    
             this.currentUserData.next(response);
             this.currentLoginOn.next(true);
+            localStorage.setItem('isLoggedIn','true');
+            localStorage.setItem('userData', JSON.stringify(response));
             return response;
           } else{
             throw new Error('Invalid credentials');
           } 
         })
       );
+  }
+
+  logout() {
+    this.currentLoginOn.next(false);
+    this.currentUserData.next({} as LoginResponseI);
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userData');
+
+    location.reload();
   }
 
   registerUser(newUser: UserI):Observable<LoginResponseI>{

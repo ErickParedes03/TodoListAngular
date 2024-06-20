@@ -19,4 +19,20 @@ export class NavbarComponent {
       console.log('Received user data:', this.userData);
     });
   }
+
+  oppenModal(){
+    const modelDiv = document.getElementById('logoutModal');
+    if(modelDiv != null) modelDiv.style.display = 'block';
+  }
+
+  closeModal($event: boolean){
+    const modelDiv = document.getElementById('logoutModal');
+    if(modelDiv != null) modelDiv.style.display = 'none';
+    if($event) this.logout();
+  }
+
+  logout(){
+    console.log("Estas deslogueado");
+    this.loginService.logout();
+  }
 }

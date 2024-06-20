@@ -1,0 +1,26 @@
+<div class="modal" id="logoutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center justify-content-center">
+                <span class="modal-title h5">Logout Account</span>
+                <i class="bi bi-exclamation-triangle text-danger fs-2 ms-3"></i>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>
+                        {{userData.data.username}}, are you sure you want to logout?
+                    </strong>
+                </p>
+                <p>
+                    <span class="text-danger">
+                        Once you logout you need to login again. Are you OK?
+                    </span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" (click)="closeModal(false)">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="closeModal(true)">Yes, Logout!</button>
+            </div>
+        </div>
+    </div>
+</div>
