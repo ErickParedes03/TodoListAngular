@@ -14,6 +14,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { TaskService } from './services/task.service';
 import { SpinnerInterceptor } from './shared/spinner/spinner.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { AccountComponent } from './account/account.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule, 
     NgxToastNotifierModule.forRoot(), 
     SharedModule,
+    AccountModule
   ],
   providers: [
     TaskService,

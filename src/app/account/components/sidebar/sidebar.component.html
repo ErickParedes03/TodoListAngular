@@ -1,0 +1,29 @@
+<div class="sidebar" [ngClass]="{'expanded' : isExpanded }">
+    <div class="header">
+        <h1 class="tittle">
+            Account
+        </h1>
+        <div class="toggle" (click)="handleSidebarToggle()">
+            <span class="chevron"></span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="link">
+            <div class="content" routerLink="/account/profile">
+                <div class="icon">
+                    <i class="bi bi-person-square"></i>
+                </div>
+                <div class="tittle">Profile</div>
+            </div>
+        </div>
+        <div class="link">
+            <div class="content" routerLink="/account/security">
+                <div class="icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <div class="tittle">Security</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
